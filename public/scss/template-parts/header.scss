@@ -1,0 +1,84 @@
+header.header {
+    background-color: white;
+    
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+
+    @include media('>tablet') {
+        padding: fluid(10, 16) 0;
+    }
+
+    .wrapper {
+        @include flex(space-between, center, wrap);
+    }
+
+    .logo {
+        font-size: fluid(10, 12);
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: rem(2);
+        background-color: #fff;
+    }
+
+    .menu {
+        position: relative;
+        @include flex(space-between, center, wrap);
+        overflow: hidden;
+
+        ul {
+            display: flex;
+            gap: fluid(16, 28);
+            transform: translateY(-9999px);
+            transition: transform 250ms ease;
+
+            &.active {
+                transform: translateY(0);
+            }
+
+            .menu-item {
+                transition: all 0.3s ease;
+                opacity: 0.88;
+
+                a {
+                    padding: rem(4) fluid(8, 10);
+                    display: block;
+                    text-transform: uppercase;
+                    font-size: fluid(10, 12);
+                    font-weight: 600;
+                    letter-spacing: rem(2);
+                }
+
+                &:hover {
+                    opacity: 1;
+                }
+
+                &.active {
+                    opacity: 0.88;
+                }
+            }
+
+            .hover-decor {
+                display: flex;
+                justify-content: space-between;
+                height: 2px;
+                position: absolute;
+                left: 0;
+                transition: transform 0.3s ease;
+
+                &::before {
+                    content: '[';
+                }
+
+                &::after {
+                    content: ']';
+                }
+            }
+        }
+
+        .hamburger {
+            display: flex;
+            scale: 0.6;
+            transform: rotate(270deg);
+            cursor: none;
+        }
+    }
+}
